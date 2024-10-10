@@ -1,0 +1,18 @@
+﻿@model Department
+
+<div class="card" style="width:350px">
+    <img class="card-img-top" src="/Image/3.png" alt="Card image">
+    <div class="card-body">
+        <h4 class="card-title">Name :@Model.Name</h4>
+        <h4 class="card-title">Address :@Model.Address</h4>
+        <h4 class="card-title">Manager Name :@Model.ManagerName</h4>
+        <h4 class="card-title">Age :@Model.Age</h4>
+
+
+        <h5 class="card-text">
+            Good department,good Manager,
+            good chance to join it .....
+        </h5>
+        <a asp-action="Index" class="btn btn-danger">Back to List</a>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+﻿@model Department
+
+<h1 class="text-center my-4">New Department</h1>
+
+<!-- Form Container with Bootstrap styling -->
+<div class="container">
+    <form asp-action="SaveNewDept" method="post">
+        <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+        <div class="form-group">
+            <label asp-for="Name" class="control-label"></label>
+            <input asp-for="Name" class="form-control" placeholder="Enter department name" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ManagerName" class="control-label">Manager Name</label>
+            <input asp-for="ManagerName" class="form-control" placeholder="Enter manager's name" />
+            <span asp-validation-for="ManagerName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Address" class="control-label">Manager Address</label>
+            <input asp-for="Address" class="form-control" placeholder="Enter manager address" />
+            <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Age" class="control-label">Manager's Age</label>
+            <input asp-for="Age" class="form-control" placeholder="Enter manager's age" type="number" />
+            <span asp-validation-for="Age" class="text-danger"></span>
+        </div>
+
+        <div class="form-group text-center">
+            <input type="submit" class="btn btn-primary btn-lg" value="Create" />
+        </div>
+    </form>
+</div>
+
+<partial name="_ValidationScriptsPartial" />
+
+<style>
+.container {
+    max-width: 600px; /* Limit the width of the form */
+    margin: auto; /* Center the form */
+    padding: 20px; /* Padding around the form */
+    border: 1px solid #dee2e6; /* Light border for the form */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #f8f9fa; /* Light background color */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Button styling */
+.btn-primary {
+    background-color: #007bff; /* Bootstrap primary color */
+    border-color: #007bff; /* Same border color */
+    border-radius: 20px; /* Rounded button */
+    padding: 10px 20px; /* Button padding */
+}
+
+/* Input field styling */
+.form-control {
+    border-radius: 4px; /* Rounded input fields */
+}
+
+/* Label styling */
+.control-label {
+    font-weight: bold; /* Bold labels for emphasis */
+}
+
+/* Validation message styling */
+.text-danger {
+    font-weight: bold; /* Bold validation messages */
+}
+
+</style>

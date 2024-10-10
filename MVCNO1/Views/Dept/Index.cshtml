@@ -1,0 +1,112 @@
+﻿@model List<Department>
+
+@{
+    Layout = "_Layout";
+}
+
+<h2 class="text-center my-4">Departments</h2>
+
+<div class="mb-3 text-center">
+    <!-- New Department Button with Bootstrap styling -->
+    <a href="/dept/NewDept" class="btn btn-primary btn-lg">New Department</a>
+</div>
+
+<!-- Container for Partial View Details -->
+<div id="detailsPartial" class="mb-4 p-3 border border-primary rounded bg-light" style="width:auto"></div>
+
+<!-- Table with Bootstrap styles -->
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover shadow-sm" style="width: 80%; margin: auto;">
+        <thead class="table-primary">
+            <tr>
+                <th>Name</th>
+                <th>Manager Name</th>
+                <th>Address</th>
+                <th>Age</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <!-- Name with AJAX link -->
+                    <td><a href="#" class="text-primary" onclick="GetData(@item.Id); return false;">@item.Name</a></td>
+                    <td>@item.ManagerName</td>
+                    <td>@item.Address</td>
+                    <td>@item.Age</td>
+                    <td>
+                        <!-- Edit and Details buttons -->
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm mx-1">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm mx-1">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm mx-1">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <!-- jQuery Library -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script>
+        function GetData(deptId) {
+            console.log(deptId);
+            event.preventDefault();
+            $.ajax({
+                url: "Dept/DetailsUsingPartial/" + deptId,
+                success: function (result) {
+                    console.log(result);
+                    $("#detailsPartial").html(result);
+                }
+            });
+        }
+    </script>
+}
+
+<!-- Custom CSS Styling -->
+<style>
+    /* Container styling for the table and buttons */
+    .table-responsive {
+        max-width: 1000px;
+        margin: auto;
+        border-radius: 10px;
+    }
+
+    /* Table header and row hover effect */
+    .table-primary {
+        background-color:blueviolet;
+        color:black;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #f2f2f2;
+    }
+
+    /* Button Styling */
+    .btn-primary, .btn-warning, .btn-info ,.btn-danger {
+        border-radius: 20px;
+        padding: 5px 15px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+    }
+
+    .btn-warning {
+        background-color: #f0ad4e;
+    }
+
+    .btn-info {
+        background-color: #5bc0de;
+    }
+
+    /* Details section styling */
+    #detailsPartial {
+        border: 1px solid #007bff;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+    }
+</style>

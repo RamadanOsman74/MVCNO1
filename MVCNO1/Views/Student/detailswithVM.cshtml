@@ -1,0 +1,12 @@
+﻿@model Studentwithbranchlist
+<h1>detailswithVM</h1>
+
+
+<select class="form-control">
+
+    @foreach (var item in @Model.Branchs)
+    {
+        <option> @item </option>
+    }
+</select>
+<h2>@Model.Name</h2>

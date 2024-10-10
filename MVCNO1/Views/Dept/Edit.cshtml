@@ -1,0 +1,76 @@
+﻿@model Department
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<!-- Adding Bootstrap styles and a custom container -->
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Edit Department</h1>
+
+    <div class="card shadow-lg">
+        <div class="card-body">
+            <form asp-action="SaveEdit" asp-controller="Dept" method="post" class="p-4">
+                <!-- Hidden input for ID -->
+                <input type="hidden" asp-for="Id" />
+
+                <!-- Department Name -->
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label fw-bold"></label>
+                    <input asp-for="Name" class="form-control" placeholder="Enter Department Name" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <!-- Manager Name -->
+                <div class="mb-3">
+                    <label asp-for="ManagerName" class="form-label fw-bold"></label>
+                    <input asp-for="ManagerName" class="form-control" placeholder="Enter Manager's Name" />
+                    <span asp-validation-for="ManagerName" class="text-danger"></span>
+                </div>
+
+                <!-- Address -->
+                <div class="mb-3">
+                    <label asp-for="Address" class="form-label fw-bold"></label>
+                    <input asp-for="Address" class="form-control" placeholder="Enter Address" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+
+                <!-- Age -->
+                <div class="mb-3">
+                    <label asp-for="Age" class="form-label fw-bold"></label>
+                    <input asp-for="Age" class="form-control" placeholder="Enter Age" />
+                    <span asp-validation-for="Age" class="text-danger"></span>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="d-flex justify-content-center">
+                    <input type="submit" class="btn btn-success px-5" value="Update" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Optional: Adding custom CSS styles for further enhancement -->
+<style>
+    .container {
+        max-width: 600px;
+    }
+
+    .card {
+        border-radius: 15px;
+        border: none;
+    }
+
+    .card-body {
+        background-color: #f9f9f9;
+    }
+
+    .form-control {
+        border-radius: 10px;
+    }
+
+    .btn-success {
+        border-radius: 25px;
+    }
+</style>

@@ -1,0 +1,76 @@
+﻿@model List<Student>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+@{
+    Layout = "_Layout";
+
+}
+<h2 style="border:solid ; font:100;color:brown;"> Student </h2>
+
+@* <div>
+    <a href="/dept/NewDept" class="btn btn-success">New Std</a>
+</div> *@
+
+@* <div style="border:3px solid blue " id="detailsPartial">
+</div> *@
+@* <span>________________ </span> *@
+<div>
+    <table style="border:2px solid red" class="table table-bordered table-hover" width="50%">
+        <tr>
+            <th> Student</th>
+            <th> Address </th>
+            <th> Image</th>
+            <th> Age </th>
+            @* <th> Info</th> *@
+
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @* <td><a href="#" onclick="GetData(@item.Id)">@item.Name</a></td> *@
+                <td>@item.Name</td>
+                <td> @item.Address </td>
+                <td> @item.Image </td>
+                <td> @item.Age </td>
+
+                @*     <td>
+            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+            <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+
+            </td> *@
+
+            </tr>
+        }
+    </table>
+</div>
+@* @section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js">  </script>
+
+    <script>
+        function GetData(empid) {
+            console.log(empid);
+            event.preventDefault();
+            $.ajax(
+                {
+                    url: "Dept/DetailsUsingPartial/" + empid, success:
+                        function (result) {
+                            console.log(result);
+                            document.getElementById("detailsPartial").innerHTML = result;
+
+
+                        }
+                }
+            );
+        }
+
+
+
+
+
+    </script> *@
+
+
